@@ -35,7 +35,7 @@ resource "aws_iam_role" "oidc" {
 }
 
 resource "aws_iam_policy" "oidc_policy" {
-  name   = "${var.name}-policy"
+  name   = var.policy_name
   policy = var.policy_json
 }
 
