@@ -1,16 +1,15 @@
 provider "aws" {
-  region = "ap-southeast-1"
+  region = "ap-northeast-1"
 }
 
-module "oidc-github" {
-  source  = "github.com/ispec-inc/aws-oidc-github-terraform"
-  version = "1.0.0"
+module "oidc_github" {
+  source = "github.com/ispec-inc/aws-oidc-github-terraform?ref=v1.0.0"
 
   org  = "ispec-inc"
-  repo = "aws-oidc-github-terraform"
+  repo = "your-awesome-repo"
 
-  role_name   = "oidc-github-role"
-  policy_name = "oidc-github-policy"
+  role_name   = "oidc-role"
+  policy_name = "oidc-policy"
 
   policy_json = jsonencode({
     Version = "2012-10-17"
@@ -32,6 +31,7 @@ module "oidc-github" {
           "ecr:UploadLayerPart",
           "ecr:CompleteLayerUpload",
           "ecr:PutImage",
+          "iam:PassRole",
         ]
         Resource = "*"
       },
