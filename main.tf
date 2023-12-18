@@ -6,13 +6,13 @@ data "tls_certificate" "github_actions" {
   url = jsondecode(data.http.github_actions_openid_configuration.response_body).jwks_uri
 }
 
-resource "aws_iam_openid_connect_provider" "github_actions_oidc_provier" {
+resource "aws_iam_openid_connect_provider" "this" {
   url             = "https://token.actions.githubusercontent.com"
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = [data.tls_certificate.github_actions.certificates[0].sha1_fingerprint]
 }
 
-resource "aws_iam_role" "oidc" {
+resource "aws_iam_role" "this" {
   name = var.role_name
 
   assume_role_policy = jsonencode({
@@ -21,7 +21,7 @@ resource "aws_iam_role" "oidc" {
       Action = "sts:AssumeRoleWithWebIdentity"
       Effect = "Allow"
       Principal = {
-        Federated = [aws_iam_openid_connect_provider.github_actions_oidc_provier.arn]
+        Federated = [aws_iam_openid_connect_provider.this.arn]
       }
       Condition = {
         StringLike = {
@@ -41,5 +41,5 @@ resource "aws_iam_policy" "oidc_policy" {
 
 resource "aws_iam_role_policy_attachment" "policy_attachment" {
   policy_arn = aws_iam_policy.oidc_policy.arn
-  role       = aws_iam_role.oidc.name
+  role       = aws_iam_role.this.name
 }
