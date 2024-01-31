@@ -6,7 +6,7 @@ OIDC provider with Github Actions.
 
 ```hcl
 module "oidc_github" {
-  source = "github.com/ispec-inc/aws-oidc-github-terraform?ref=v1.0.0"
+  source = "github.com/ispec-inc/aws-oidc-github-terraform?ref=v1.1.0"
 
   org  = "ispec-inc"
   repo = "your-awesome-repo"
