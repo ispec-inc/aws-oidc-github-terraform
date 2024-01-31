@@ -15,16 +15,16 @@ variable "policy_json" {
 
 variable "org" {
   type        = string
-  description = "github org name"
+  description = "GitHub org name"
 }
 
 variable "repo" {
   type        = string
-  description = "github repository name"
+  description = "GitHub repository name"
 }
 
-variable "ref_prefix" {
+variable "ref" {
   type        = string
-  description = "git branch ref prefix"
+  description = "GitHub ref(branch, tag, or commit ID)"
   default     = "*"
 }

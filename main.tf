@@ -26,7 +26,7 @@ resource "aws_iam_role" "this" {
       Condition = {
         StringLike = {
           "token.actions.githubusercontent.com:sub" = [
-            "repo:${var.org}/${var.repo}:ref:${var.ref_prefix}",
+            "repo:${var.org}/${var.repo}:${var.ref}",
           ]
         }
       }

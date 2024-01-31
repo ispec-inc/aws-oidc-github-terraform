@@ -77,11 +77,11 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_org"></a> [org](#input\_org) | github org name | `string` | n/a | yes |
+| <a name="input_org"></a> [org](#input\_org) | GitHub org name | `string` | n/a | yes |
 | <a name="input_policy_json"></a> [policy\_json](#input\_policy\_json) | iam policy document json | `string` | n/a | yes |
 | <a name="input_policy_name"></a> [policy\_name](#input\_policy\_name) | iam policy name | `string` | n/a | yes |
-| <a name="input_ref_prefix"></a> [ref\_prefix](#input\_ref\_prefix) | git branch ref prefix | `string` | `"*"` | no |
-| <a name="input_repo"></a> [repo](#input\_repo) | github repository name | `string` | n/a | yes |
+| <a name="input_ref"></a> [ref](#input\_ref) | GitHub ref(branch, tag, or commit ID) | `string` | `"*"` | no |
+| <a name="input_repo"></a> [repo](#input\_repo) | GitHub repository name | `string` | n/a | yes |
 | <a name="input_role_name"></a> [role\_name](#input\_role\_name) | iam role name | `string` | n/a | yes |
 
 ## Outputs
